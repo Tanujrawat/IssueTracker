@@ -10,14 +10,14 @@
 </head>
 
 <body>
-    <section class="sect1">
+    <section class="FirstDiv">
         <div class="container">
             <p>Add New Issue</p>
             <form action="#" id="myForm">
                 <label for="descrip">Description</label>
-                <div class="taker"><input type="text" id="descrip" name="description" required></div>
+                <div class="AssignmentTo"><input type="text" id="descrip" name="description" required></div>
                 <label for="severe">Severity</label>
-                <div class="taker" required>
+                <div class="AssignmentTo" required>
                     <select id="severe" name="severity">
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
@@ -25,28 +25,28 @@
                     </select>
                 </div>
                 <label for="assign">Assigned To</label>
-                <div class="taker"><input type="text" id="assign" name="assignedto" required></div>
+                <div class="AssignmentTo"><input type="text" id="assign" name="assignedto" required></div>
                 <button type="button" onclick="addData()">Add</button>
             </form>
         </div>
     </section>
 
     <div class="navigateContainer">
-        <div class="boxSection">
+        <div class="CommonBox">
             <h1>NEW CARD</h1>
-            <div class="ticketSection" id="state1"></div>
+            <div class="CommonTicket" id="newCard"></div>
         </div>
-        <div class="boxSection">
+        <div class="CommonBox">
             <h1>IN DEVELOPMENT</h1>
-            <div class="ticketSection" id="state2"></div>
+            <div class="CommonTicket" id="inDev"></div>
         </div>
-        <div class="boxSection">
+        <div class="CommonBox">
             <h1>QA</h1>
-            <div class="ticketSection" id="state3"></div>
+            <div class="CommonTicket" id="qa"></div>
         </div>
-        <div class="boxSection">
+        <div class="CommonBox">
             <h1>DONE</h1>
-            <div class="ticketSection" id="state4"></div>
+            <div class="CommonTicket" id="done"></div>
         </div>
     </div>
 
