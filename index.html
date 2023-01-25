@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="issueTracker.css">
+    <title>Issue Tracker</title>
+</head>
+
+<body>
+    <section class="sect1">
+        <div class="container">
+            <p>Add New Issue</p>
+            <form action="#" id="myForm">
+                <label for="descrip">Description</label>
+                <div class="taker"><input type="text" id="descrip" name="description" required></div>
+                <label for="severe">Severity</label>
+                <div class="taker" required>
+                    <select id="severe" name="severity">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <label for="assign">Assigned To</label>
+                <div class="taker"><input type="text" id="assign" name="assignedto" required></div>
+                <button type="button" onclick="addData()">Add</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="navigateContainer">
+        <div class="boxSection">
+            <h1>NEW CARD</h1>
+            <div class="ticketSection" id="state1"></div>
+        </div>
+        <div class="boxSection">
+            <h1>IN DEVELOPMENT</h1>
+            <div class="ticketSection" id="state2"></div>
+        </div>
+        <div class="boxSection">
+            <h1>QA</h1>
+            <div class="ticketSection" id="state3"></div>
+        </div>
+        <div class="boxSection">
+            <h1>DONE</h1>
+            <div class="ticketSection" id="state4"></div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    
+</body>
+
+
+</html>
