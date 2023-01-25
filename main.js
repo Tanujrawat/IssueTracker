@@ -5,7 +5,12 @@ function addData() {
     var id = Math.floor(Math.random() * 100000000) ;
     var newObject = { ticketId: id, description: description, severity: severity, assignTo: assignTo, phase: 'New' };
 
-    ValueAdd(newObject);
+    if ((description.length == 0) || (assignTo.length == 0)) {
+        alert("Please fill all fields with required data.");
+    }
+    else{
+        ValueAdd(newObject);
+    }
 
     document.getElementById("descrip").value = "";
     document.getElementById("assign").value = "";
@@ -19,7 +24,7 @@ function ValueAdd(newObject) {
     const card = document.createElement("div");
     card.classList = 'card';
 
-    const state1 = document.querySelector("#state1");
+    const newCard = document.querySelector("#newCard");
     const ticketCard = `
     <div class="text textbtn">
         <p>Issue Id: </p><span id="ticketID">${newObject.ticketId}</span>
@@ -29,22 +34,22 @@ function ValueAdd(newObject) {
     <div class="textbtn" id="severityText">${newObject.description}</div>
     <div class="textbtn" id="severityText">${newObject.severity}</div>
     <div class="textbtn" id="assignedToText">${newObject.assignTo}</div>
-    <div class="btn closebtn">close</div>
-    <div class="btn deletebtn" id="delete">delete</div>
+    <div class="btn exitBtn">close</div>
+    <div class="btn delBtn" id="delete">delete</div>
     <div class="btn prevbtn" id="previous">Prev</div>
     <div class="btn nextbtn" id="next">Next</div>
     `;
 
     card.innerHTML += ticketCard;
-    state1.appendChild(card);
+    newCard.appendChild(card);
 
     let prevBtn = card.querySelector("#previous");
     let nextBtn = card.querySelector("#next");
     prevBtn.style.display = "none";
     nextBtn.style.display = "inline-block";
 
-    const deleteBtn = card.querySelector("#delete");
-    deleteBtn.addEventListener("click", () => {
+    const delBtn = card.querySelector("#delete");
+    delBtn.addEventListener("click", () => {
         // Remove the card from the DOM
         card.remove();
     });
@@ -57,22 +62,22 @@ function ValueAdd(newObject) {
     openBtn.addEventListener("click", () => {
         // Remove the card from the DOM
         if (issueStatus.textContent == "New") {
-            state1.appendChild(card);
+            newCard.appendChild(card);
             prevBtn.style.display = "none";
             nextBtn.style.display = "inline-block";
         }
         else if (issueStatus.textContent == "In Development") {
-            state2.appendChild(card);
+            inDev.appendChild(card);
             prevBtn.style.display = "inline-block";
             nextBtn.style.display = "inline-block";
         }
         else if (issueStatus.textContent == "QA") {
-            state3.appendChild(card);
+            qa.appendChild(card);
             prevBtn.style.display = "inline-block";
             nextBtn.style.display = "inline-block";
         }
         else if (issueStatus.textContent == "Done") {
-            state4.appendChild(card);
+            done.appendChild(card);
             prevBtn.style.display = "inline-block";
             nextBtn.style.display = "none";
         }
@@ -80,8 +85,8 @@ function ValueAdd(newObject) {
         //card.remove();
     });
 
-    const closeBtn = card.querySelector(".closebtn");
-    closeBtn.addEventListener("click", () => {
+    const exitBtn = card.querySelector(".exitBtn");
+    exitBtn.addEventListener("click", () => {
         const openBtn = card.querySelector(".openbtn");
         openBtn.innerHTML = `closed`;
         openBtn.style.background = "red";
@@ -90,23 +95,23 @@ function ValueAdd(newObject) {
     });
 
     nextBtn.addEventListener("click", () => {
-        if (state1.contains(card)) {
+        if (newCard.contains(card)) {
             prevBtn.style.display = "inline-block";
             issueStatus.textContent = "In Development";
-            state1.removeChild(card);
-            state2.appendChild(card);
-        } else if (state2.contains(card)) {
+            newCard.removeChild(card);
+            inDev.appendChild(card);
+        } else if (inDev.contains(card)) {
             issueStatus.textContent = "QA";
-            state2.removeChild(card);
-            state3.appendChild(card);
-        } else if (state3.contains(card)) {
+            inDev.removeChild(card);
+            qa.appendChild(card);
+        } else if (qa.contains(card)) {
             issueStatus.textContent = "Done";
             prevBtn.style.display = "inline-block";
             nextBtn.style.display = "none";
 
-            state3.removeChild(card);
-            state4.appendChild(card);
-        } else if (state4.contains(card)) {
+            qa.removeChild(card);
+            done.appendChild(card);
+        } else if (done.contains(card)) {
             prevBtn.style.display = "inline-block";
             
         }
@@ -114,20 +119,20 @@ function ValueAdd(newObject) {
 
     prevBtn.addEventListener("click", () => {
 
-        if (state2.contains(card)) {
+        if (inDev.contains(card)) {
             prevBtn.style.display = "none";
             issueStatus.textContent = "New"
-            state2.removeChild(card);
-            state1.appendChild(card);
-        } else if (state3.contains(card)) {
+            inDev.removeChild(card);
+            newCard.appendChild(card);
+        } else if (qa.contains(card)) {
             prevBtn.style.display = "inline-block";
             nextBtn.style.display = "inline-block";
             issueStatus.textContent = "In Development"
-            state3.removeChild(card);
-            state2.appendChild(card);
-        } else if (state4.contains(card)) {
-            state4.removeChild(card);
-            state3.appendChild(card);
+            qa.removeChild(card);
+            inDev.appendChild(card);
+        } else if (done.contains(card)) {
+            done.removeChild(card);
+            qa.appendChild(card);
             issueStatus.textContent = "QA"
             prevBtn.style.display = "inline-block";
             nextBtn.style.display = "inline-block";
