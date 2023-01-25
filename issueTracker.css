@@ -4,17 +4,7 @@
     box-sizing: border-box;
 }
 
-nav {
-    width: 100%;
-    height: 10vh;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: linear-gradient(rgb(140, 173, 243), grey);
-}
-
-.sect1 {
+.FirstDiv {
     width: 100%;
     height: fit-content;
     /* border: 2px solid red; */
@@ -37,7 +27,7 @@ nav {
     margin-left: 10px;
 }
 
-.taker {
+.AssignmentTo {
     width: 100%;
     padding: 10px 20px;
 
@@ -55,7 +45,7 @@ input {
     font-size: 18px;
 }
 
-.taker select {
+.AssignmentTo select {
     width: 100%;
     height: 30px;
     font-size: 18px;
@@ -118,7 +108,7 @@ button {
     justify-content: center; */
 }
 
-.closebtn {
+.exitBtn {
     background-color: rgb(255, 166, 0);
     ;
     color: white;
@@ -129,7 +119,7 @@ button {
     padding: 12px;
 }
 
-.deletebtn {
+.delBtn {
     background-color: red;
     color: white;
     font-size: 20px;
@@ -174,7 +164,7 @@ button {
     justify-content: space-evenly;
 }
 
-.boxSection {
+.CommonBox {
     width: 24%;
     height: fit-content;
     padding: 5px 1px;
@@ -183,12 +173,12 @@ button {
     border-radius: 10px;
 }
 
-.boxSection h1 {
+.CommonBox h1 {
     text-align: center;
     margin-bottom: 10px;
 }
 
-.ticketSection {
+.CommonTicket {
     height: 60vh;
     /* border: 1px solid black; */
     /* display: flex; */
